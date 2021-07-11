@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Frontend Web design demo for project defense">
+     <meta name="keywords" content="MediaLink, Demo">
+     <meta name="author" content="Damilare">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+	<script src="https://use.fontawesome.com/4e1a12fbcb.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>MediaLink | Login</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .btn{
+            border-radius:50px;
+        }
+        @font-face {
+  font-family:'Plain Regular';
+  src: url('../fonts/Plain-Regular.woff') format('woff'), 
+  url('../fonts/Plain-Regular.woff2') format('woff');
+}
+body{
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Plain Regular', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+	overflow: hidden;
+}
+h1{
+	font-weight: bold;
+	margin: 0;
+}
+h2{
+	text-align: center;
+}
+p{
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+span {
+	font-size: 12px;
+}
+a {
+	color: #222;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+.container {
+	background-color: #000;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+				0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	width:500px;
+	height: 550px;
+}
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+button {
+	border-radius: 20px;
+	border: 1px solid #e4a719;
+	background-color: #e4a719;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	margin-bottom: 30px;
+}
+button:active {
+	transform: scale(0.95);
+}
+button:focus {
+	outline: none;
+}
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+input {
+	background-color: #ddd;
+	border:none;
+	border-radius: 5px;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+.sign-in-container {
+	left: 0;
+  width: 100%;
+	z-index: 2;
+}
+
+.social-container {
+	margin: 20px 0;
+}
+.social-container a {
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+}
+code{
+	color:green;
+}
+
+@media only screen and (max-width: 513px) {
+	.container{
+		min-height: 100%;
+		width:100%;
+		box-shadow:none;
+	}
+}
+</style>
+</head>
+  
+
+<div class="container" id="container">
+	<!-- <div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fa fa-facebook"></i></a>
+				<a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+				<a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" name="name"/>
+			<input type="email" placeholder="Email" name="email"/>
+			<input type="password" placeholder="Password" name="password" />
+			<button >Sign Up</button>
+		</form>
+	</div> -->
+	<div class="form-container sign-in-container">
+		<form action="" onsubmit="process()">
+			<h3>hey there, welcome!</h3>
+			
+			<h3>Sign in</h3>
+			
+			<div class="social-container">
+				<a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+				<a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+			</div>
+			<span>or use your account</span>
+			<div>
+				<p style="color:red; font-size:20px;" id="show"><p>
+			  </div>
+			<small>
+				use <code>username:admin</code>  and <code>password:admin</code> to sign in
+			</small>
+			<input type="text" placeholder="username" name="username" id="username"/>
+			<input type="password" placeholder="Password" name="password" id="password" />
+			<a href="#">Forgot your password?</a>
+			<button type="submit" onclick="validate()">Sign In <i class="fa fa-sign-in"></i></button>
+		</form>
+	</div>
+	<!-- <div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>welcome back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>hey there!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div> -->
+</div>
+
+    
+<script>
+// Form validation
+function validate(){
+	event.preventDefault();
+	var user = 'admin';
+	var pass = 'admin';
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	var output = document.querySelector('#show');
+	if(username == '' || password == ''){
+		output.innerHTML = 'Username or Password Cannot be empty';
+		}else if(username != user || password != pass){
+			output.innerHTML = 'Username or password Incorrect';
+		}else if(username === user && password === pass){
+			location.href= 'home.html';
+
+// attempt --;// Decrementing by one.
+// alert("You have " + attempt+ " attempts left");
+// // Disabling fields after 3 attempts.
+// if( attempt == 0){
+// document.getElementById("username").disabled = true;
+// document.getElementById("password").disabled = true;
+// document.getElementById("submit").disabled = true;
+// return false;
+
+	}
+}
+</script>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.js"></script>
+    <!-- <script src="js/media-link.js"></script> -->
+</body>
+</html>
